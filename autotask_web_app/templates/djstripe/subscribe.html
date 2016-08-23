@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load static djstripe_tags %}
+{% block page %}
+
+  <!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
+  <div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- END PAGE HEADER-->
+    <div class="portlet light portlet-fit ">
+      <div class="portlet-title">
+          <div class="caption">
+              <i class=" fa fa-search fa-2x font-green"></i>
+              <span class="caption-subject font-green bold uppercase">Subscriptions</span>
+          </div>
+      </div>
+      <div class="portlet-body">
+        <ul class="breadcrumb">
+          <li><a href="{% url 'djstripe:account' %}">Home</a></li>
+          <li class="active">Subscription</li>
+        </ul>
+        <h2>Choose a Subscription</h2>
+
+        {% if error %}
+            <div class="alert alert-error">{{ error }}</div>
+        {% endif %}
+        {% if view.error %}
+            <div class="alert alert-error">{{ view.error }}</div>
+        {% endif %}
+
+        <div class="row">
+            {% for plan in PLAN_LIST %}
+              {% with plan_count=PLAN_LIST|length %}
+                <div class="col-xs-3 col-xs-offset-4">
+              {% endwith %}
+                    {% if customer.current_subscription.plan == plan.plan and customer.current_subscription.status != CurrentSubscription.STATUS_CANCELLED %}
+                    <div class="pricing-content-2">
+                        <div class="pricing-table-container">
+                        <div class="price-column-container border-left border-top border-right">
+                            <div class="price-table-head price-1">
+                                <h2 class="uppercase {% if plan.name == 'Bronze' %} bg-blue {% elif plan.name == 'Silver' %} bg-blue-steel {% elif plan.name == 'Gold' %} bg-green-jungle {% endif %} font-grey-cararra opt-pricing-5">{{ plan.name }}</h2>
+                            </div>
+                            <div class="price-table-pricing">
+                                <h3>
+                                    <span class="price-sign">£</span>{{ plan.webprice }}</h3>
+                                <p class="uppercase">per {{ plan.interval }}</p>
+                            </div>
+                            <div class="price-table-content">
+                              {% if plan.feature1 %}
+                                <div class="row no-margin">
+                                    <div class="col-xs-3 text-right">
+                                        <i class="{{ plan.feature1icon }}"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-left uppercase">{{ plan.feature1 }}</div>
+                                </div>
+                                {% endif %}
+                                {% if plan.feature2 %}
+                                  <div class="row no-margin">
+                                      <div class="col-xs-3 text-right">
+                                        <i class="{{ plan.feature2icon }}"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-left uppercase">{{ plan.feature2 }}</div>
+                                  </div>
+                                {% endif %}
+                                {% if plan.feature3 %}
+                                  <div class="row no-margin">
+                                      <div class="col-xs-3 text-right">
+                                          <i class="{{ plan.feature3icon }}"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-left uppercase">{{ plan.feature3 }}</div>
+                                  </div>
+                                  {% endif %}
+                                  {% if plan.feature4 %}
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                            <i class="{{ plan.feature4icon }}"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase">{{ plan.feature4 }}</div>
+                                    </div>
+                                    {% endif %}
+                                    {% if plan.feature5 %}
+                                      <div class="row no-margin">
+                                          <div class="col-xs-3 text-right">
+                                              <i class="{{ plan.feature5icon }}"></i>
+                                          </div>
+                                          <div class="col-xs-9 text-left uppercase">{{ plan.feature5 }}</div>
+                                      </div>
+                                    {% endif %}
+                            </div>
+                            <div class="price-table-footer">
+                              <a class="btn grey-salsa btn-outline sbold uppercase disabled" href="{% url 'djstripe:confirm' plan=plan.plan %}" role="button"> CURRENT PLAN </a>
+                            </div>
+                        </div>
+                      </div>
+                    {% else %}
+                    <div class="pricing-content-2">
+                        <div class="pricing-table-container">
+                        <div class="price-column-container border-left border-top border-right">
+                            <div class="price-table-head price-1">
+                                <h2 class="uppercase {% if plan.name == 'Bronze' %} bg-blue {% elif plan.name == 'Silver' %} bg-blue-steel {% elif plan.name == 'Gold' %} bg-green-jungle {% endif %} font-grey-cararra opt-pricing-5">{{ plan.name }}</h2>
+                            </div>
+                            <div class="price-table-pricing">
+                                <h3>
+                                    <span class="price-sign">£</span>{{ plan.webprice }}</h3>
+                                <p class="uppercase">per {{ plan.interval }}</p>
+                            </div>
+                            <div class="price-table-content">
+                              {% if plan.feature1 %}
+                                <div class="row no-margin">
+                                    <div class="col-xs-3 text-right">
+                                        <i class="{{ plan.feature1icon }}"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-left uppercase">{{ plan.feature1 }}</div>
+                                </div>
+                                {% endif %}
+                                {% if plan.feature2 %}
+                                  <div class="row no-margin">
+                                      <div class="col-xs-3 text-right">
+                                        <i class="{{ plan.feature2icon }}"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-left uppercase">{{ plan.feature2 }}</div>
+                                  </div>
+                                {% endif %}
+                                {% if plan.feature3 %}
+                                  <div class="row no-margin">
+                                      <div class="col-xs-3 text-right">
+                                        <i class="{{ plan.feature3icon }}"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-left uppercase">{{ plan.feature3 }}</div>
+                                  </div>
+                                  {% endif %}
+                                  {% if plan.feature4 %}
+                                    <div class="row no-margin">
+                                        <div class="col-xs-3 text-right">
+                                          <i class="{{ plan.feature4icon }}"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-left uppercase">{{ plan.feature4 }}</div>
+                                    </div>
+                                    {% endif %}
+                                    {% if plan.feature5 %}
+                                      <div class="row no-margin">
+                                          <div class="col-xs-3 text-right">
+                                            <i class="{{ plan.feature5icon }}"></i>
+                                          </div>
+                                          <div class="col-xs-9 text-left uppercase">{{ plan.feature5 }}</div>
+                                      </div>
+                                    {% endif %}
+                            </div>
+                            <div class="price-table-footer">
+                              {% if customer.current_subscription.amount < plan.price|djdiv:100 %}
+                                <a class="btn grey-salsa btn-outline sbold uppercase" href="{% url 'djstripe:confirm' plan=plan.plan %}" role="button"> UPGRADE </a>
+                              {% elif customer.current_subscription.amount > plan.price|djdiv:100 %}
+                                <a class="btn grey-salsa btn-outline sbold uppercase" href="{% url 'djstripe:confirm' plan=plan.plan %}" role="button"> DOWNGRADE </a>
+                              {% else %}
+                                <a class="btn grey-salsa btn-outline sbold uppercase" href="{% url 'djstripe:confirm' plan=plan.plan %}" role="button"> SIGN UP </a>
+                              {% endif %}
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if customer.current_subscription.plan == plan.plan and customer.current_subscription.status != CurrentSubscription.STATUS_CANCELLED %}
+                    </div>
+                    {% else %}
+                    </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+      </div>
+  </div>
+</div>
+  <!-- END CONTENT BODY -->
+<!-- END CONTENT -->
+{% endblock %}

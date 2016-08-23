@@ -1,0 +1,265 @@
+/* ==========================================================================
+
+   Updates CSS Stylesheet.
+
+   This stylesheet contains the updates we will make. Usually in template.css
+   or addons.css we'll just add tweaks however this will contains the future
+   updates of this template. Do not change nothing as it will be constantly updated.
+
+   ========================================================================== */
+
+
+.kl-iconbox__el-wrapper .kl-iconbox__title { color: #323232; font-size: 19px; line-height: 24px; font-family: 'Montserrat';}
+
+.site-header.style5.new {border-bottom: #fff; background-color: #fff;}
+.site-header.style5.new:after { display: none;}
+.site-header.style5.new .main-nav>ul>li>a { color: #252525;}
+.site-header.style5.new .main-nav>ul>li:hover>a { color: #fff;}
+.site-header.style5.new .topnav>li>a { color: #252525;}
+.site-header.style5.new .icon-white { color: #252525;}
+.site-header.style5.new .social-icons.topnav.sc--clean>li>a:hover { color: #616161;}
+.site-header.style5.new .spanel-label { color: #252525;}
+.site-header.style5.new .searchBtn .icon-white { color: #fff !important;}
+.site-header.style5.new .separator { background: #4E4E4E;}
+.site-header.style5.new .zn-res-trigger::after { background: #333;box-shadow: 0 8px 0 #333,0 16px 0 #333;}
+
+.site-header.style8 .siteheader-container { margin-top: 17px;}
+
+.site-header.style9 { background-color: #fff;}
+.site-header.style9 .kl-top-header { color: #252525;}
+.site-header.style9 .topnav>li>a { color: #252525;}
+.site-header.style9 .topnav--lang .icon-white {color: #252525;}
+.site-header.style9 .social-icons.topnav.sc--clean>li>a { color: #252525;}
+.site-header.style9 .social-icons.topnav.sc--clean>li>a:hover { color: #6B6B6B;}
+.site-header.style9 .kl-header-toptext,
+.site-header.style9 .kl-header-toptext a { color: #252525;}
+.site-header.style9 .main-nav>ul>li>a { color: #252525;}
+.site-header.style9 .main-nav>ul>li:hover>a { color: #fff;}
+.site-header.style9 .glyphicon-shopping-cart {color: #252525}
+
+.site-header.style3.new { min-height: 120px;}
+
+.site-header.style11 { background: #000;}
+.site-header.style11 .logo-container { background: #333333; padding: 0 20px;}
+.site-header.style11 .site-logo { min-height: 71px;}
+.site-header.style11 .main-nav { float: right;}
+.site-header.style11 .zn-res-trigger { float: right; margin-top: 27px;}
+
+.site-header.style12 .site-logo {margin: 0 auto; float: none;}
+.site-header.style12 .logo-container { float: none; display: inline-block; position: relative;}
+.site-header.style12 .main-nav { float: none; text-align: center;}
+.site-header.style12 .kl-main-header { text-align: center;}
+.site-header.style12 .logo-container .logo-infocard { left: -150px;}
+.site-header.style12 .logo-container.hasInfoCard:before { top: 30px;}
+.site-header.style12 .site-logo a { padding-top: 5px;}
+
+
+@media (max-width: 768px) {
+	.login-panel .create_account { margin-bottom: 10px;}
+	.login-panel .form-control { margin-bottom: 10px;}
+}
+
+/* Fixes */
+@media (max-width: 1200px) {
+ 	.kl-iconbox--fright .kl-iconbox__icon-wrapper,
+ 	.kl-iconbox--fleft .kl-iconbox__icon-wrapper { float: none;}
+ }
+
+.site-header.style2 .kl-top-header2 {background: rgba(0,0,0,.7);color: rgba(255, 255, 255, 0.8);}
+.site-header.style2 .kl-main-header .topnav { margin: 9px 0;}
+
+.site-header.style2 .main-nav ul ul.sub-menu { top: calc(100% + 15px);}
+.site-header.style2 .main-nav .hg_mega_container { top: calc(100% + -1px); }
+.site-header.style2 .main-nav ul li:hover>ul { top: calc(100% - -8px);}
+.site-header.style2 .main-nav ul li:hover>.hg_mega_container { top: calc(100% - -18px);}
+.site-header.style2 .main-nav>ul>li>a { padding-top: 9px; padding-bottom: 4px;}
+.site-header.style2 .main-nav>ul>li.active>a:before,
+.site-header.style2 .main-nav>ul>li:hover>a:before,
+.site-header.style2 .main-nav>ul>li>a:hover:before { height: calc(100% + 25px); margin-bottom: -25px; margin-top: 8px;}
+
+.site-header.style3 .header-search, .site-header.style3.cta_button .header-search { margin-top: -3px;}
+.site-header.style3 .logo-container, .site-header.style3 .site-logo { margin: 5px auto;}
+.site-header.style3 .main-nav>ul { margin-bottom: -6px;}
+.site-header.style3 .main-nav ul ul.sub-menu { top: calc(100% + 10px);}
+.site-header.style3 .main-nav>ul { margin-top: 5px;}
+.site-header.style3 .main-nav>ul>li { padding-bottom: 10px;}
+.site-header.style3 .kl-cta-ribbon { margin-top: -10px;}
+.site-header.style3 .main-nav .hg_mega_container { top: calc(100% + 0px);}
+.site-header.style3 .main-nav ul li:hover>ul { top: calc(100% - -3px);}
+.site-header.style3 .main-nav ul li:hover>.hg_mega_container { margin-top: 0px;}
+.site-header.style3 .topnav.sc--clean>li>a,
+.site-header.style3 .topnav:not(.social-icons)>li>a,
+.site-header.style3 .topnav>li .icon-white { color: #252525;}
+.site-header.style3 .main-nav>ul>li>a { color: #252525;}
+
+.social-share2 { margin: 0px 0 30px; padding: 0; list-style: none; text-align: left;}
+.services_box--boxed .services_box__list { padding-top: 250px !important;}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+	.chaser .main-menu li a { font-size: 10px;}
+	.chaser .main-menu { margin-top: 32px;}
+
+
+}
+
+@media ( min-width: 992px) {
+  .site-header.style12 .main-nav>ul { display: inline-block; text-align: left;}
+}
+
+@media (max-width: 991px) {
+	.site-header.style5 .zn-res-trigger { float: right; margin-top: 15px;}
+}
+
+@media (min-width: 768px) {
+  .site-header.style11 .separator { margin-bottom: 0;}
+}
+
+@media (max-width: 768px) {
+	.site-header .site-logo {width: 100%;height: auto; min-height: 0 !important;max-height: 100px;padding-top: 10px;padding-bottom: 10px;}
+ 	.logo-container{float: none;text-align: center; overflow: hidden;}
+ 	.site-header .social-icons.topnav~.kl-header-toptext {float: left;clear: left; margin-bottom: 10px; margin-top: 0;}
+ 	.separator.visible-xxs { display: block!important;}
+ 	.zn-res-trigger { margin-top: 10px;}
+ 	.site-header .topnav { margin-top: 15px;}
+ 	.header-leftside-container { overflow: hidden; margin-bottom: 0 !important;}
+ 	.site-header .header-search .searchBtn,
+ 	.site-header.cta_button .header-search .searchBtn { margin: 14px 0 0 10px;}
+
+ 	.site-header.style2 .kl-main-header .topnav { margin: 9px 0;}
+ 	.site-header.style2 .header-rightside-container { overflow: hidden; float: none; margin: 0;}
+ 	.site-header.style2 .h-right-inner { float: left;}
+ 	.site-header.style2 .header-rightside-container .topnav { float: left;}
+ 	.site-header.style2 .header-search,
+ 	.site-header.style2.cta_button .header-search { top: 20px; height: 30px;}
+ 	.site-header.style2 .header-search .searchBtn,
+ 	.site-header.style2.cta_button .header-search .searchBtn { margin: 0;}
+
+ 	.site-header.style4 .site-logo a { border-top: none; border-bottom: none; background: transparent;}
+ 	.site-header.style4 .site-logo a:after { display: none;}
+ 	.site-header.style4 .spanel-label { margin-top: 2px;}
+ 	.site-header.style4 .xs-icon { line-height: 24px;}
+
+ 	.site-header.style3 {background-color: #fff;}
+ 	.site-header.style3 .topnav.social-icons li { margin: -4px 0 0 10px;}
+ 	.site-header.style3 .topnav { margin-top: 2px;}
+ 	.site-header.style3 .spanel-label { margin-top: 2px;}
+ 	.site-header.style3 .logo-container, .site-header.style3 .site-logo {margin: 0px auto;}
+
+ 	.site-header.style3 .kl-header-toptext { margin-top: 0;}
+
+
+ 	.kl-store-page .left_sidebar ul.products li.product, .kl-store-page .right_sidebar ul.products li.product { width: 50%;}
+
+
+   .site-header,
+   .site-header.style2,
+   .site-header.style4,
+   .site-header.style5 {background-color:#2f2f2f;}
+   .site-header.style4 .topnav.navLeft { margin-left: 0;}
+
+   .site-header.style5 .header--oldstyles .topnav .xs-icon { line-height: 22px;}
+   .site-header.style5 .header-links-container { margin: 0; height: 35px;}
+   .site-header.style5 .topnav { float: none;}
+   .site-header.style5 .spanel-label { margin-top: 1px;}
+
+   .site-header.style6 .site-logo a { border-top: none; border-bottom: none; background: transparent;}
+   .site-header.style6 .site-logo a:after { display: none;}
+   .site-header.style6 .topnav.navLeft,
+   .site-header.style6 .topnav.navRight { margin-top: 6px;}
+   .site-header.style6 .header-links-container { margin: 0 !important;}
+   .site-header.style6 .languages { margin-left: 0;}
+
+   .site-header.style11 .zn-res-trigger,
+   .site-header.style12 .zn-res-trigger { float: left; margin-top: 10px; margin-bottom: 15px; margin-left: 15px;}
+
+   .iosslider-slideshow .iosSlider,
+   .static-content__source { transform: none !important;}
+
+
+   .services_box--boxed:hover { z-index: 3;}
+   .services_box--boxed .services_box__list { padding-top: 250px !important;}
+
+   .gobox:after,
+   .gobox:before { transform: none; left: auto; right: auto;}
+   .gobox.ok { padding-left: 50px}
+   .gobox.ok>.glyphicon { left: 20px;}
+
+   .container .process_steps--style2 .process_steps__intro { border-top-right-radius: 5px;}
+   .process_steps__intro-wrp { margin-bottom: 30px}
+   .bigsocialblock__title { margin-bottom: 0;}
+
+   .photo-wall .pw-details [data-role="title"] { line-height: 24px;}
+   .kl-slideshow .kl-slideshow-safepadding { padding-top: 50px !important;}
+
+   .flickrfeed { overflow: hidden; margin-bottom: 30px;}
+   .hover-box.hover-box-2 { margin-bottom: 15px;}
+   .info-text { margin-bottom: 25px;}
+
+
+   .full_width { padding-left: 15px; padding-right: 15px;}
+
+   .hg_section--relative.ptop-210 { padding-top: 70px !important;}
+
+   .one-page-footer .newsletter-signup .nl-email { width: 100%;}
+
+   .team_member,
+   .team_member:hover { padding: 20px; margin-bottom: 20px;}
+
+	.vertical_tabs.kl-style-2 .tabbable { -webkit-box-orient: vertical; -webkit-box-direction: normal;
+    -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column;}
+
+    .vertical_tabs.kl-style-2 .tabbable .nav>li>a { margin-right: 1px;}
+    .vertical_tabs.kl-style-2 .tabbable .nav>li:first-child a { border-top-right-radius: 3px;}
+    .vertical_tabs.kl-style-2 .tabbable .nav>li:last-child a { border-bottom-right-radius: 3px;}
+}
+
+@media (max-width: 600px) {
+	.tabbable>ul.nav>li { float: none;display: block;}
+    .tabs_style5>ul.nav>li:first-child>a { padding: 8px 20px;}
+    .tabs_style2>ul.nav>li:first-child a,
+    .tabs_style2>ul.nav>li a,
+    .tabs_style3>ul.nav>li>a,
+    .tabs_style4>ul.nav>li>a { padding: 12px 20px;}
+    .tabs_style4>ul.nav { border: solid 1px #ddd; border-radius: 3px; margin-bottom: 10px;}
+    .tabs_style4>ul.nav>li.active>a { border: none;}
+}
+
+@media (max-width: 500px) {
+ 	.action_box_content .ac-buttons a { margin-bottom: 10px;}
+
+}
+
+@media (max-width:480px){
+
+	.kl-store-page .left_sidebar ul.products li.product, .kl-store-page .right_sidebar ul.products li.product {width: 100%;}
+	.header-leftside-container { overflow: visible;}
+	.site-header.style2 .header-search,
+ 	.site-header.style2.cta_button .header-search { top: 20px; height: 30px;}
+ 	.site-header.style2 .header-search .searchBtn,
+ 	.site-header.style2.cta_button .header-search .searchBtn { margin: 0;}
+
+ 	.site-header.style4 .topnav.navLeft { margin-top: -4px;}
+ 	.site-header.style4 .header--oldstyles .topnav.social-icons { margin-top: -2px;}
+ 	.site-header.style4 .spanel-label { margin-top: -1px;}
+ 	.site-header.style4 .header-links-container { margin: 8px 0 7px !important; height: auto; width: 100%; border-bottom: none; padding-bottom: 0;}
+ 	.site-header.style4 .glyphicon-log-in { margin-top: -2px; margin-right: 10px;}
+
+
+ 	.site-header.style5 .header-links-container { margin: 0 0 7px!important; }
+ 	.site-header.style5 .header-search { clear: left;}
+ 	.site-header.style5 .topnav { float: right;}
+ 	.site-header.style5 .header-links-container { margin: 8px 0 7px !important; height: auto; width: 100%; border-bottom: none; padding-bottom: 0;}
+
+
+ 	.site-header.style6 .header-links-container { height: 35px !important; border-bottom: none;}
+ 	.site-header.style6 .header--oldstyles .topnav.social-icons { margin-top: 3px;}
+ 	.site-header.style6 .header--oldstyles .topnav.topnav--lang { margin-top: 2px;}
+ 	.site-header.style6 .topnav.navLeft, .site-header.style6 .topnav.navRight { margin-top: 4px;}
+
+ 	.btn-forth { width: 50%;}
+
+ 	.grid-ibx--cols-2 .grid-ibx__item,
+ 	.grid-ibx--cols-3 .grid-ibx__item,
+ 	.grid-ibx--cols-4 .grid-ibx__item,
+ 	.grid-ibx--cols-5 .grid-ibx__item { margin-left: 0;}
+}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block page %}
+
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+        <!-- BEGIN PAGE HEADER-->
+        <!-- END PAGE HEADER-->
+        {% if at == None %}
+        <div class="note note-danger">
+            <h4 class="block">Autotask connection not established</h4>
+            <p><strong>Reason: </strong>
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}</p>
+              <hr>
+            <p><a href="{% url 'profile' user.id %}">Please login to Autotask using your credentials, this will allow you to start searching for accounts.</p></a>
+        </div>
+        {% endif %}
+        {% if at != None %}
+          <div class="portlet light portlet-fit ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class=" fa fa-search fa-2x font-green"></i>
+                    <span class="caption-subject font-green bold uppercase">Welcome to the Autotask Validator</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+              <p>Take back control of Autotask and ensure your engineers are entering the right information.</p>
+              <p><strong>Instructions:</strong></p>
+                <p>1. Enter your Autotask login credentials on the profile page <br>
+                2. Create Picklist modules by clicking on "Create Picklist Module".<br>
+                3. Configure Validation Groups!<br>
+                4. Configure Autotask LiveLinks<br>
+                5. Validate your input!</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- END CONTENT BODY -->
+</div>
+<!-- END CONTENT -->
+{% endblock %}

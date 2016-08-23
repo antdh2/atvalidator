@@ -1,0 +1,141 @@
+/* YOUR CUSTOM STYLES */
+
+
+
+#messages-content {
+  min-height:0px !important;
+}
+
+input#id_email {
+    outline: 0!important;
+    box-shadow: none!important;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #c2cad8;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #555;
+    display: block;
+}
+
+.login .content .forget-password {
+    margin-top: 25px;
+    border-top: 1px dotted #ccc;
+}
+
+.login .content .create-account {
+    border-top: 1px dotted #ccc;
+}
+
+#id_password {
+  margin-bottom: 15px;
+}
+
+input#id_remember {
+  margin-left: 10px;
+  padding: 10px;
+  margin-top: 5px;
+  line-height: normal;
+}
+
+
+.client-deposit {
+  border: 1px solid #ececec;
+  padding: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 15px;
+}
+
+.client-deposit p {
+  line-height: 18px;
+}
+
+.client-collection {
+  border: 1px solid #ececec;
+  padding: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.client-collection p {
+  line-height: 18px;
+}
+
+
+.ticket-sheet {
+  -webkit-box-shadow: 4px 6px 30px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 6px 30px -8px rgba(0,0,0,0.75);
+  box-shadow: 4px 6px 30px -8px rgba(0,0,0,0.75);
+}
+
+.ticket-sheet-header {
+  background: #ececec;
+}
+
+.note.note-success {
+    border-left: 4px solid #58d0da;
+}
+
+.note.note-info {
+    border-left: 4px solid #8bb4e7;
+}
+
+.note.note-danger {
+    border-left: 4px solid #f0868e;
+}
+
+.note.note-warning {
+    border-left: 4px solid #f3cc31;
+}
+
+.disabled a {
+    color: #e0e0e0 !important;
+}
+
+.disabled i {
+    color: #e0e0e0 !important;
+}
+
+.error {
+  color: red;
+}
+
+.logo-text>a {
+  float: none !important;
+  color: white;
+  margin-top: 10px;
+}
+
+.logo-text small {
+  color: #e0e0e0;
+}
+
+.logo-text>a:hover {
+  color: white;
+  text-decoration: initial;
+  }
+
+  @media print {
+  body * {
+    visibility: hidden;
+  }
+  #print * {
+    visibility: visible;
+  }
+  #print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

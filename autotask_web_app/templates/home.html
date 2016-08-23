@@ -1,0 +1,654 @@
+{% load staticfiles %}
+{% load static djstripe_tags %}
+
+<html>
+  <head>
+    <title>Autotask Validator | Studio in the Cloud</title>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
+    <meta name="keywords" content="autotask, autotask input validation">
+    <meta name="description" content="Autotask Input Validation. Remove the possibility of human error and protect your reputation, get data entry wrong in Autotask and the consequences can be serious.">
+
+
+    <!--  Desktop Favicons  -->
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}" sizes="16x16">
+
+    <!-- Google Fonts CSS Stylesheet // More here http://www.google.com/fonts#UsePlace:use/Collection:Open+Sans -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,600italic,700,800,800italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- ***** Boostrap Custom / Addons Stylesheets ***** -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" media="all">
+
+    <!-- ***** Main + Responsive & Base sizing CSS Stylesheet ***** -->
+    <link rel="stylesheet" href="{% static 'css/template.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/base-sizing.css' %}" type="text/css" media="all">
+    <!-- Updates CSS Stylesheet (for future templates updates) -->
+    <link rel="stylesheet" href="{% static 'css/updates.css' %}" type="text/css">
+    <!-- Custom CSS Stylesheet (where you should add your own css rules) -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css">
+</head>
+<body class="">
+    <div id="page" class="page zn_res_menu_visible"><!-- Hero Scene - Text Pop-up Element -->
+
+    <!-- Required scripts for Element -->
+    <script type="text/javascript" src="{% static 'addons/scrollme/jquery.scrollme.js' %}"></script>
+    <!-- / Required scripts for Element -->
+
+    <div class="header-pb editContent" style="outline: none; cursor: inherit;">
+        <header id="header" class="site-header cta_button" data-header-style="1">
+        <div class="kl-header-bg">
+        </div>
+        <div class="container siteheader-container">
+            <div class="kl-top-header clearfix">
+                <!-- HEADER ACTION -->
+                <div class="header-links-container ">
+                    <ul class="topnav navRight topnav">
+                      {% if request.user.profile %}
+                        <li class="editContent" style="outline: none; cursor: inherit;">
+                        <a href="{% url 'index' %}">
+                        <i class="fa fa-sign-in validatorlogin" aria-hidden="true"></i>
+                        <span class="hidden-xs">TO THE VALIDATOR</span>
+                        </a>
+                        </li>
+                        <li class="editContent" style="outline: none; cursor: inherit;">
+                        <a href="{% url 'account_logout' %}">
+                        <i class="fa fa-key validatorlogin" aria-hidden="true"></i>
+                        <span class="hidden-xs">LOG OUT</span>
+                        </a>
+                        </li>
+                      {% else %}
+                        {% if testing123 %}
+                        <li class="editContent" style="outline: none; cursor: inherit;">
+                        <a href="#">
+                        <i class="glyphicon glyphicon-log-in visible-xs xs-icon"></i>
+                        <span class="hidden-xs">LOGIN</span>
+                        </a>
+                        </li>
+                        {% endif %}
+                      {% endif %}
+                    </ul>
+                </div>
+                <!-- HEADER ACTION left -->
+                <div class="header-leftside-container ">
+                  <ul class="social-icons sc--clean topnav navRight">
+                    <li><a href="https://www.facebook.com/studiointhecloud" target="_self" class="icon-facebook" title="Facebook"></a></li>
+                    <li><a href="https://twitter.com/cloud_studio" target="_self" class="icon-twitter" title="Twitter"></a></li>
+                  </ul>
+                    <div class="clearfix visible-xxs">
+                    </div>
+                    <span class="kl-header-toptext editContent" style="outline: none; cursor: inherit;">QUESTIONS? <a href="mailto:info@studiointhecloud.co.uk?subject=Autotask Validation Enquiry" class="fw-bold">EMAIL US</a></span>
+                </div>
+            </div>
+            <!-- end top-header -->
+            <div class="separator">
+            </div>
+            <!-- left side -->
+            <div class="separator visible-xxs">
+            </div>
+        </div>
+        </header>
+        <!-- /header -->
+    </div>
+    <div class="kl-slideshow static-content__slideshow uh_light_gray maskcontainer--mask5 scrollme">
+        <div class="bgback">
+        </div>
+        <div class="kl-slideshow-inner static-content__wrapper static-content--height">
+            <div class="static-content__source animateme" data-when="span" data-from="0" data-to="0.75" data-easing="linear" data-translatey="300" data-opacity="0.1" style="">
+                <div class="kl-bg-source">
+                    <div class="editContent" style="outline: none; cursor: inherit;">
+                        <div class="kl-bg-source__bgimage" style="background-image:url(static/img/bg_01.jpg);background-repeat:no-repeat;background-attachment:scroll;background-position-x:center;background-position-y:center;background-size:cover">
+                        </div>
+                        <div class="kl-bg-source__overlay" style="background:rgba(130,36,227,0.35); background: -moz-linear-gradient(left, rgba(130,36,227,0.35) 0%, rgba(53,53,53,0.55) 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(130,36,227,0.35)), color-stop(100%,rgba(53,53,53,0.55))); background: -webkit-linear-gradient(left, rgba(130,36,227,0.35) 0%,rgba(53,53,53,0.55) 100%); background: -o-linear-gradient(left, rgba(130,36,227,0.35) 0%,rgba(53,53,53,0.55) 100%); background: -ms-linear-gradient(left, rgba(130,36,227,0.35) 0%,rgba(53,53,53,0.55) 100%); background: linear-gradient(to right, rgba(130,36,227,0.35) 0%,rgba(53,53,53,0.55) 100%); ">
+                        </div>
+                    </div>
+                </div>
+                <div class="th-sparkles">
+                </div>
+            </div>
+            <!-- /.static-content__source -->
+            <div class="static-content__inner container">
+                <div class="kl-slideshow-safepadding sc__container animateme" data-when="span" data-from="0" data-to="0.75" data-translatey="200" data-opacity="0.1" data-easing="linear" style="">
+                    <div class="static-content textpop-style">
+                        <div class="editContent" style="outline: none; cursor: inherit;">
+                            <div class="textpop__texts">
+                                <span class="textpop__line1">AUTOTASK APP</span><span class="textpop__line2">INPUT VALIDATION</span><span class="textpop__line3">TAKE CONTROL OF YOUR DATA ENTRY</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.video-style -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.static-content__inner -->
+        </div>
+        <!-- /.static-content__wrapper -->
+        <div class="editContent" style="outline: none; cursor: inherit;">
+            <div class="kl-bottommask kl-bottommask--mask5">
+                <svg width="2700px" height="64px" class="svgmask" viewBox="0 0 2700 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-mask5">
+                <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+                <feGaussianBlur stdDeviation="1.5" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
+                <feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.45 0" in="shadowInnerInner1" type="matrix" result="shadowMatrixInner1"></feColorMatrix>
+                <feMerge>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+                <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+                </feMerge>
+                </filter>
+                </defs>
+                <path d="M1892,0 L2119,44.993 L2701,45 L2701.133,63.993 L-0.16,63.993 L1.73847048e-12,45 L909,44.993 L1892,0 Z" class="bmask-bgfill" fill="#f5f5f5" filter="url(#filter-mask5)"></path>
+                <path d="M2216,44.993 L2093,55 L1882,6 L995,62 L966,42 L1892,0 L2118,44.993 L2216,44.993 L2216,44.993 Z" fill="#cd2122" class="bmask-customfill" filter="url(#filter-mask5)"></path>
+                </svg>
+            </div>
+            <!-- end page mask -->
+        </div>
+    </div>
+    <!--/ Hero Scene - Text Pop-up Element --><!-- Device Left Sided Laptop & Smartphone Element -->
+    <section class="hg_section">
+        <div class="hg_section_size container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="el-devimages el-devimages--type-img el-devimages--rtl">
+                        <div class="el-devimages__laptop el--appear el--appear-sfl el--appeared editContent" style="outline: none; cursor: inherit;">
+                            <div class="el-devimages__laptop-img " style="background-image:url({% static 'img/validationgroup.jpg' %});">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 editContent" style="outline: none; cursor: inherit;">
+                    <div class="kl-title-block clearfix text-left tbk-symbol-- tbk-icon-pos--before-title">
+                        <h3 class="tbk__title ">AUTOTASK INPUT VALIDATION</h3>
+                        <div class="tbk__text">
+                            <p>Ever experienced issues with validating input for Autotask? A wrong work type on a time entry can lead to an embarassing complaint from a customer who recieved an invoice 3 times what they were expecting.</p>
+                            <p>You may have an extensive library of LiveReports scheduled to catch such errors, but there is just one problem.</p>
+                            <p>It's all in the past, like <span class="fw-semibold">autotask screenshots</span>, capturing errors that have already happened.</p>
+                            <p>These minor errors can cause huge problems. Wouldn't it be great if you could stop these errors from happening? Stop it dead, at the source, by validating the input directly from the engineer. Your <span class="fw-semibold">Autotask ticketing system</span> deserves to be data-error free.</p>
+                            <p>Autotask Validation utilises highly advanced and customisable back-end Autotask input validation. No matter how your business organises it's data or manages it's processes for Autotask, our application will be able to accomodate your validation testing requirements.</p>
+                          </div>
+                        </div>
+                        <div class="text_box">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Device Left Sided Laptop & Smartphone Element --><!-- Info Box Full Width Style Element -->
+        <section class="hg_section hg_section--relative">
+            <div class="kl-bg-source editContent">
+                <div class="kl-bg-source__bgimage" style="background-image:url({% static 'img/desk.jpg' %});background-repeat:no-repeat;background-attachment:scroll;background-position-x:center;background-position-y:center;background-size:cover">
+                </div>
+                <div class="kl-bg-source__overlay" style="background-color:rgba(53,53,53,0.8)">
+                </div>
+            </div>
+            <div class="hg_section_size container editContent">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="infobox3" style="background-repeat:no-repeat;background-size:cover;background-position:center center;background-attachment:scroll;">
+                            <div class="row">
+                                <div class="ib-content infobox3--light col-sm-12 col-lg-12">
+                                    <h3 class="ib-content__title m_title"><span class="fw-thin">Remove any doubt of human error and <span class="fw-semibold">be 100% confident </span>of the data being entered into Autotask. Stop <span class="fw-semibold">wasting time</span> fixing errors that should
+                                    have never happened.</span></h3>
+                                    <p>
+                                        Entering the wrong work type on a ticket or allocating the wrong contract can result in incorrect invoices being sent to your customers. Protect your reputation and validate the input. Improve your <span class="fw-semibold">Autotask Service Desk efficiency</span> by eliminating human error and stopping easy mistakes from being made.
+                                    </p>
+                                    <div class="ib-button ib-button-2">
+                                        <a href="#pricing" class="ib-button2 btn btn-fullcolor">SEE PRICING</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ Info Box Full Width Style Element --><!-- Device Right Sided Vector Element -->
+    <section class="hg_section">
+        <div class="hg_section_size container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 editContent">
+                    <div class="kl-title-block clearfix tbk--left text-left tbk--color-default tbk-symbol-- tbk-icon-pos--before-title">
+                        <h3 class="tbk__title ">NO CHANGE TO YOUR WORKFLOW</h3>
+                    </div>
+                    <div class="text_box">
+                        <p>
+                           You won't have to break from your existing workflow that your engineers and sales staff have already gotten used to.
+                        </p>
+                        <p>
+                             By utilizing LiveLinks you can configure Autotask to send the relevent data to the validation software for when you create tickets or other Autotask entities.
+                        </p>
+                        <p>
+                             For example, create a new service desk ticket by going to <strong>LiveLinks -&gt; Create Ticket</strong> rather than New -&gt; Ticket.
+                        </p>
+                        <p>
+                             Stay within Autotask but gain the added benefit of highly advanced and customizable input validation.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="el-devimages el-devimages--type-vector el-devimages--ltr">
+                        <div class="el-devimages__laptop editContent">
+                            <div class="el-devimages__laptop-img" style="background-image:url({% static 'img/livelinks.jpg' %});">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Device Right Sided Vector Element --><!-- Steps Box 1 Style 2 Element -->
+    <section class="hg_section hg_section--relative">
+        <div class="kl-bg-source editContent">
+            <div class="kl-bg-source__bgimage" style="background-image:url({% static 'img/meeting3.jpg' %});background-repeat:no-repeat;background-attachment:scroll;background-position-x:center;background-position-y:center;background-size:cover">
+            </div>
+            <div class="kl-bg-source__overlay" style="background-color:rgba(53,53,53,0.8)">
+            </div>
+        </div>
+        <div class="hg_section_size container editContent">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="infobox3" style="background-repeat:no-repeat;background-size:cover;background-position:center center;background-attachment:scroll;">
+                        <div class="row">
+                            <div class="ib-content infobox3--light col-sm-12 col-lg-12">
+                                <h3 class="ib-content__title m_title"><span class="fw-thin">
+                                  <span class="fw-semibold">Conditional rules</span> allow you to define when your validations trigger</span></h3>
+                                <p>
+                                  Your staff shouldn't feel like they are contained within small boxes. Want to send just a warning instead of refusing to complete the action? No problem, you can also <span class="fw-semibold">set individual validations to be mandatory or not.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hg_section">
+        <div class="hg_section_size container">
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="el-devimages el-devimages--type-img el-devimages--rtl">
+                  <div class="el-devimages__laptop el--appear el--appear-sfl el--appeared editContent" style="outline: none; cursor: inherit;">
+                    <div class="el-devimages__laptop-img " style="background-image:url({% static 'img/atvalidation.jpg' %});">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 editContent" style="outline: none; cursor: inherit;">
+                <div class="kl-title-block clearfix text-left tbk-symbol-- tbk-icon-pos--before-title">
+                  <h3 class="tbk__title ">REAL-TIME VALIDATION FEEDBACK</h3>
+                  <div class="tbk__text">
+                    <p></p>
+                    <p>This application is built with the end user in mind. Get instant feedback on the <span class="fw-semibold">Autotask object</span> you are creating in real time as you are completing the form.</p>
+                    <p>If your form input triggers one of the conditional arguments configured for a validation group, a helpful message will instantly appear with the relevent information to make sure you know what's gone wrong and what you need to do to fix it.</p>
+                    <p>By hiding all of the validation configuration from the end user, there is far less setup required per employee and no additional training required. If you want to make sure specific scenarios are handled just the way your processes define, Autotask Validation gives you the freedom to do just that.</p>
+                    <p><span class="fw-semibold">You can also define individual validation tests to be passed as either a warning, or mandatory.</p></span>
+                    <p>A mandatory validation will prevent any action from being taken, the user will not be able to submit the form until the validation test has passed.</p>
+                    <p>However, there may be situations where you might want to <span class="fw-semibold">inform the user that something they have selected might not be quite appropriate</span>, but it isn't mission critical and
+                    is acceptable to be fixed afterwards.</p>
+                  </div>
+                </div>
+                <div class="text_box">
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call-out Banner Style 2 Element -->
+    <section class="hg_section p-0">
+        <div class="hg_section_size container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="callout-banner clearfix">
+                        <div class="row">
+                            <div class="col-sm-10 editContent">
+                                <h3 class="m_title"><span class="fw-thin">Don't worry, we are here for your <span class="fw-semibold">Autotask Support</span> for input validations too.</span></h3>
+                                <p>
+                                     We'll help you get started with navigating your profile dashboard, configuring the Autotask login settings, creating your picklist module and finally creating, configuring, editing and deleting your validation groups and validations.
+                                </p>
+                            </div>
+                            <div class="col-sm-2 editContent">
+                                <a href="#pricing" class="circlehover with-symbol style2" data-size="" data-position="top-left" data-align="right"><span class="text">FIND OUT <span class="fw-normal">MORE</span></span><span class="symbol"><img src="/static/img/callout2.svg" alt=""></span>
+                                <div class="triangle">
+                                    <span class="play-icon"></span>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call-out Banner Style 2 Element -->
+
+
+
+            <section class="hg_section hg_section--relative">
+                <div class="kl-bg-source editContent">
+                    <div class="kl-bg-source__bgimage" style="background-image:url({% static 'img/buildings.jpg' %});background-repeat:no-repeat;background-attachment:scroll;background-position-x:center;background-position-y:center;background-size:cover">
+                    </div>
+                    <div class="kl-bg-source__overlay" style="background-color:rgba(53,53,53,0.8)">
+                    </div>
+                </div>
+                <div class="hg_section_size container editContent">
+                  <div class="row">
+                  <div class="col-sm-offset-2 col-md-8 col-sm-8">
+                      <div class="kl-title-block clearfix text-center">
+                          <h3 class="tbk__title montserrat fs-28 fw-bold white editContent" style="outline: none; cursor: inherit;">WE'RE ALMOST READY!</h3>
+                          <h4 class="tbk__subtitle fs-16 fw-thin white editContent" style="outline: none; cursor: inherit;">Pre-register your interest below by entering your e-mail address to get a 10% discount on launch</h4>
+                      </div>
+                      <a name="beta"></a>
+                      <div id="mc_embed_signup" class="newsletter-signup editContent" style="outline: none; cursor: inherit; display: none;">
+                      <form action="http://studiointhecloud.us13.list-manage.com/subscribe/post?u=5f65ac60072e3d57309b4aa11&amp;id=be099f70a7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="novalidate">
+                        <div id="mc_embed_signup_scroll">
+                        <div class="mc-field-group">
+                      	  <input type="email" value="" name="EMAIL" id="mce-EMAIL" class="nl-email form-control" placeholder="your.address@email.com" required="" aria-required="true">
+                          <input type="submit" value="SIGN UP" name="subscribe" id="mc-embedded-subscribe" class="nl-submit">
+
+                        </div>
+                      	<div id="mce-responses" class="clear">
+                      		<div class="response" id="mce-error-response" style="display:none"></div>
+                      		<div class="response" id="mce-success-response" style="display:none"></div>
+                      	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_5f65ac60072e3d57309b4aa11_be099f70a7" tabindex="-1" value=""></div>
+                        </div>
+                      </form>
+                      </div>
+                      <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+                      <div id="mc_embed_signup" class="newsletter-signup editContent" style="outline: none; cursor: inherit;">
+                      <form action="//studiointhecloud.us13.list-manage.com/subscribe/post?u=5f65ac60072e3d57309b4aa11&amp;id=be099f70a7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+                          <div id="mc_embed_signup_scroll">
+
+                      <div class="mc-field-group">
+                      	<input type="email" value="" name="EMAIL" class="required email nl-email form-control" id="mce-EMAIL" placeholder="your.address@email.com">
+                        <input type="submit" value="SIGN UP" name="subscribe" id="mc-embedded-subscribe" class="nl-submit">
+                      </div>
+                      	<div id="mce-responses" class="clear">
+                      		<div class="response" id="mce-error-response" style="display:none"></div>
+                      		<div class="response" id="mce-success-response" style="display:none"></div>
+                      	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_5f65ac60072e3d57309b4aa11_be099f70a7" tabindex="-1" value=""></div>
+                          <div class="clear"></div>
+                          </div>
+                      </form>
+                      </div>
+                      <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+                      <!--End mc_embed_signup-->
+
+                      <div class="elm-socialicons text-center editContent" style="outline: none; cursor: inherit;">
+                          <ul class="elm-social-icons sc--colored sh--rounded clearfix">
+                              <li>
+                              <a href="https://www.facebook.com/studiointhecloud" target="_self" class="elm-sc-icon elm-sc-icon-0 icon-facebook icon-bg" title="Facebook"></a>
+                              </li>
+                              <li>
+                              <a href="https://twitter.com/cloud_studio" target="_blank" class="elm-sc-icon elm-sc-icon-1 icon-twitter icon-bg" title="Twitter"></a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+                </div>
+            </section>
+
+
+    <!--/ Steps Box 1 Style 2 Element --><!-- Pricing Element -->
+    <a name="pricing"></a>
+    <section class="hg_section pbottom-80">
+        <div class="hg_section_size container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 editContent">
+                    <div class="pricing-table-element" data-columns="3">
+                        <div class="plan-column featured">
+                            <ul>
+                                <li class="plan-title">
+                                <div class="inner-cell">
+                                     Starter
+                                </div>
+                                </li>
+                                <li class="subscription-price">
+                                <div class="inner-cell">
+                                    <span class="currency">£</span>
+                                    <span class="price">10</span>
+                                    per month
+                                </div>
+                                </li>
+                                <li>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     Customised Backend Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                    Create Validation Groups
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                    Dynamically Assign Validation Groups
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                    Conditional Validation Group Triggers
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     LiveLinks Integration
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                    Ticket Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     -
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     -
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                    <a href="" target="" class="btn btn-fullcolor disabled">Coming Soon</a>
+                                </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="plan-column">
+                            <ul>
+                                <li class="plan-title">
+                                <div class="inner-cell">
+                                     Standard
+                                </div>
+                                </li>
+                                <li class="subscription-price">
+                                <div class="inner-cell">
+                                    <span class="currency">£</span>
+                                    <span class="price">15</span>
+                                    per month
+                                </div>
+                                </li>
+                                <li>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     <strong>All Starter Features PLUS:</strong>
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                    Account Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                  Contact Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                  Contract Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                  Invoice Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                  -
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     -
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     -
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                    <a href="" target="" class="btn btn-fullcolor disabled">Coming Soon</a>
+                                </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="plan-column ">
+                            <ul>
+                                <li class="plan-title">
+                                <div class="inner-cell">
+                                     Professional
+                                </div>
+                                </li>
+                                <li class="subscription-price">
+                                <div class="inner-cell">
+                                    <span class="currency">£</span>
+                                    <span class="price">20</span>
+                                    per month
+                                </div>
+                                </li>
+                                <li>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     <strong>All Standard Features PLUS:</strong>
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     LiveLinks Integration
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     Product Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                      Quote Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     Opportunity Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     Appointment Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     Task Validation
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                     -
+                                </div>
+                                </li>
+                                <li>
+                                <div class="inner-cell">
+                                    <a href="" target="" class="btn btn-fullcolor disabled">Coming Soon</a>
+                                </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--/ Pricing Element --><!-- Footer Default Style Element -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+            </div>
+            <!-- end row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="bottom clearfix">
+                        <ul class="social-icons sc--clean clearfix editContent">
+                            <li class="title">GET SOCIAL</li>
+                            <li><a href="https://www.facebook.com/studiointhecloud" target="_self" class="icon-facebook" title="Facebook"></a></li>
+                            <li><a href="https://twitter.com/cloud_studio" target="_self" class="icon-twitter" title="Twitter"></a></li>
+                        </ul>
+                        <div class="copyright editContent">
+                            <p>
+                                 © 2016 All Rights Reserved | <a href="http://www.studiointhecloud.co.uk">Studio in the Cloud</a>.
+                            </p>
+                        </div>
+                        <!-- end copyright -->
+                    </div>
+                    <!-- end bottom -->
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+    </footer>
+    <!--/ Footer Default Style Element --></div><!-- /#page -->
+
+    <a href="#" id="totop">TOP</a>
+
+    <!-- JS FILES // These should be loaded in every page -->
+
+
+
+    <!-- Custom Kallyas JS codes -->
+
+    <!-- Custom user JS codes -->
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-XXXXX-X', 'auto');
+      ga('send', 'pageview');
+    </script>
+    -->
+
+
+<div class="chaser"><div class="container"><div id="chaserMenuRow" class="row"></div></div></div></body></html>

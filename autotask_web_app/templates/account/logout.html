@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load account_tags %}
+{% load i18n %}
+
+{% block page %}
+
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+  <!-- BEGIN CONTENT BODY -->
+  <div class="page-content">
+      <!-- BEGIN PAGE HEADER-->
+      <!-- END PAGE HEADER-->
+
+    <div class="portlet light portlet-fit ">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class=" icon-layers font-green"></i>
+          <span class="caption-subject font-green bold uppercase">Are You Sure You Want To Log Out?</span>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-5">
+                <form method="POST" action="{% url "account_logout" %}">
+                    <fieldset>
+                        {% csrf_token %}
+                        <button type="submit" class="btn green">{% trans "Log out" %}</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

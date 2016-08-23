@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load account_tags %}
+{% load i18n %}
+{% block page %}
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+        <!-- BEGIN PAGE HEADER-->
+                    <!-- END PAGE HEADER-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- BEGIN PROFILE SIDEBAR -->
+                            <div class="profile-sidebar">
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light profile-sidebar-portlet ">
+                                    <!-- SIDEBAR USERPIC -->
+                                    <div class="profile-userpic">
+                                        <img src="{% static 'img/avatar.png' %}" class="img-responsive" alt=""> </div>
+                                    <!-- END SIDEBAR USERPIC -->
+                                    <!-- SIDEBAR USER TITLE -->
+                                    <div class="profile-usertitle">
+                                        <div class="profile-usertitle-name"> {{ user.profile.first_name }} {{ user.profile.last_name }}</div>
+                                        <div class="profile-usertitle-job"> {{ user.profile.company.name }} </div>
+                                        <br>
+                                    </div>
+                                    <!-- END SIDEBAR USER TITLE -->
+                                </div>
+                                <!-- END PORTLET MAIN -->
+                                <!-- PORTLET MAIN -->
+                                <div class="portlet light ">
+                                    <div>
+                                        <h4 class="profile-desc-title">About {{ user.profile.first_name }} {{ user.profile.last_name }}</h4>
+                                        <span class="profile-desc-text"> {% if profile.about %} {{ profile.about }} {% else %} You have not entered a bio. {% endif %}</span>
+                                    </div>
+                                </div>
+                                <div class="portlet light ">
+                                    <div>
+                                        <h4 class="profile-desc-title">Social Media</h4>
+                                        <div class="margin-top-20 profile-desc-link">
+                                            <i class="fa fa-globe"></i>
+                                            <a href="http://www.studiointhecloud.co.uk">www.studiointhecloud.co.uk</a>
+                                        </div>
+                                        <div class="margin-top-20 profile-desc-link">
+                                            <i class="fa fa-twitter"></i>
+                                            <a href="http://www.twitter.com/cloud_studio/">@cloud_studio</a>
+                                        </div>
+                                        <div class="margin-top-20 profile-desc-link">
+                                            <i class="fa fa-facebook"></i>
+                                            <a href="https://www.facebook.com/studiointhecloud/">studiointhecloud</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END PORTLET MAIN -->
+                            </div>
+                            <!-- END BEGIN PROFILE SIDEBAR -->
+      <!-- BEGIN PROFILE CONTENT -->
+      <div class="profile-content">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="portlet light ">
+                      <div class="portlet-title tabbable-line">
+                          <div class="caption caption-md">
+                              <i class="icon-globe theme-font hide"></i>
+                              <span class="caption-subject font-blue-madison bold uppercase">Profile Account</span>
+                          </div>
+                          <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#tab_1_1" data-toggle="tab">Personal</a>
+                            </li>
+                            <li class="">
+                                <a href="#tab_1_2" data-toggle="tab">Company</a>
+                            </li>
+                          </ul>
+                      </div>
+                      <div class="portlet-body">
+                          <div class="tab-content">
+                              <!-- PERSONAL INFO TAB -->
+                              <div class="tab-pane active" id="tab_1_1">
+                                  <form role="form" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="editprofile" value="editprofile">
+                                      <div class="form-group">
+                                          <label class="control-label">First Name</label>
+                                          <input name="profile-firstname" type="text" placeholder="John" class="form-control" value="{{ user.profile.first_name }}"/> </div>
+                                      <div class="form-group">
+                                          <label class="control-label">Last Name</label>
+                                          <input name="profile-lastname" type="text" placeholder="Doe" class="form-control" value="{{ user.profile.last_name }}" /> </div>
+                                      <div class="form-group">
+                                          <label class="control-label">About</label>
+                                          <textarea name="profile-about" class="form-control" rows="3" placeholder="Enter a short description of yourself..." value="{{ user.profile.about }}"></textarea>
+                                      </div>
+                                      <div class="margiv-top-10">
+                                        <input type="submit" class="btn green" />
+                                      </div>
+                                  </form>
+                              </div>
+                              <!-- END PERSONAL INFO TAB -->
+                              <!-- CHANGE AVATAR TAB -->
+                              <script type="text/javascript">
+                                function showJoin() {
+                                    div = document.getElementById('joincompany');
+                                    div2 = document.getElementById('createcompany');
+                                    div.style.display = "block";
+                                    div2.style.display = "none";
+                                }
+                                function showCreate() {
+                                  div = document.getElementById('createcompany');
+                                  div2 = document.getElementById('joincompany');
+                                  div.style.display = "block";
+                                  div2.style.display = "none";
+                                }
+                              </script>
+                              <div class="tab-pane" id="tab_1_2">
+                                {% if user.profile.company.name == "No Company" %}
+                                <a onclick="javascript:showJoin();" class="btn green">JOIN COMPANY</a>  <a onclick="javascript:showCreate();" class="btn green">CREATE COMPANY</a>
+                                <div id="joincompany" style="display: none">
+                                  <hr>
+                                  <h4>You are not part of a company</h4>
+                                  <p>Join your company by entering the name, id and password below</p>
+                                  <hr>
+                                  <form role="form" method="POST" style="width: 35%">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="joincompany" value="joincompany">
+                                      <div class="form-group">
+                                        <label class="control-label">Company Name</label>
+                                        <input name="join-company-name" type="text" placeholder="Company Name" class="form-control"/>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="control-label">Company ID</label>
+                                        <input name="join-company-id" type="text" placeholder="Company ID" class="form-control"/>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="control-label">Company Password</label>
+                                        <input name="join-company-password" type="password" placeholder="Password" class="form-control" value=""/>
+                                      </div>
+                                      <div class="margiv-top-10">
+                                        <input type="submit" class="btn green" />
+                                      </div>
+                                  </form>
+                                </div>
+                                <div id="createcompany" style="display: none">
+                                  <hr>
+                                  <h4>Create New Company</h4>
+                                  <p>Create a new company and hand out the Name, ID and Password to other users</p>
+                                  <hr>
+                                  <form role="form" method="POST" style="width: 35%">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="createcompany" value="createcompany">
+                                      <div class="form-group">
+                                          <label class="control-label">Company Name</label>
+                                          <input name="create-company-name" type="text" placeholder="Enter a Company Name" class="form-control"/>
+                                      </div>
+                                      <div class="form-group">
+                                          <label class="control-label">Company Password</label>
+                                          <input name="create-company-password" type="password" placeholder="Enter a Company Password" class="form-control"/>
+                                      </div>
+                                      <div class="margiv-top-10">
+                                        <input type="submit" class="btn green" />
+                                      </div>
+                                  </form>
+                                </div>
+                                {% endif %}
+                                {% if user.profile.company.name != "No Company" %}
+                                  <h4>Your Company</h4>
+                                  <p>You must leave this company before you can join or create one</p>
+                                  <hr>
+                                  <form role="form" method="POST" style="width: 35%">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="leavecompany" value="leavecompany">
+                                      <div class="form-group">
+                                        <label class="control-label">Company Name</label>
+                                        <input name="company-name" type="text" class="form-control" value="{{ user.profile.company.name }}"/>
+                                      </div>
+                                      <div class="form-group">
+                                        <label class="control-label">Company ID</label>
+                                        <input name="company-id" type="text" class="form-control" value="{{ user.profile.company.id }}"/>
+                                      </div>
+                                      <div class="margiv-top-10">
+                                        <input type="submit" class="btn green" value="LEAVE COMPANY">
+                                      </div>
+                                  </form>
+                                {% endif %}
+                              </div>
+
+                              <!-- END CHANGE AVATAR TAB -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- END PROFILE CONTENT -->
+      <!-- BEGIN AUTOTASK CONTENT -->
+      {% if user.profile.company.id > 1 %}
+      <div class="profile-content">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="portlet light ">
+                      <div class="portlet-title tabbable-line">
+                          <div class="caption caption-md">
+                              <i class="icon-globe theme-font hide"></i>
+                              <span class="caption-subject font-blue-madison bold uppercase">Configure Autotask</span>
+                          </div>
+                          <ul class="nav nav-tabs">
+                              <li class="active">
+                                  <a href="#tab_2_1" data-toggle="tab">Autotask Credentials</a>
+                              </li>
+                              <li>
+                                  <a href="#tab_2_2" data-toggle="tab">Picklist Module</a>
+                              </li>
+                          </ul>
+                      </div>
+                      <div class="portlet-body">
+                          <div class="tab-content">
+                              <!-- PERSONAL INFO TAB -->
+                              <div class="tab-pane active" id="tab_2_1">
+                                <form class="form-horizontal margin-bottom-40" role="form" method="POST">
+                                  {% csrf_token %}
+                                  <input type="hidden" name="autotasklogin" value="autotasklogin">
+                                  <div class="form-group form-md-line-input">
+                                      <label for="inputEmail12" class="col-md-2 control-label">Username</label>
+                                      <div class="col-md-4">
+                                          <div class="input-icon">
+                                              <input type="email" class="form-control" placeholder="Autotask Username..." id="username" name="username">
+                                              <div class="form-control-focus"> </div>
+                                              <i class="fa fa-envelope-o"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group form-md-line-input">
+                                      <label for="inputPassword1" class="col-md-2 control-label">Password</label>
+                                      <div class="col-md-4">
+                                          <div class="input-icon">
+                                              <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+                                              <div class="form-control-focus"> </div>
+                                              <i class="fa fa-key"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" class="btn green" />
+                                      </div>
+                                  </div>
+                              </form>
+                              </div>
+                              <!-- END PERSONAL INFO TAB -->
+                              <!-- CHANGE AVATAR TAB -->
+                              <div class="tab-pane" id="tab_2_2">
+                                <a id="create-picklist-module" class="btn green" href="{% url 'create_picklist_database' %}">Create Picklist Module</a>
+                                <div style="margin-top: 25px" id="picklist-messages"></div>
+                              </div>
+                              <!-- END CHANGE AVATAR TAB -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% endif %}
+      <!-- END AUTOTASK CONTENT -->
+      </div>
+      </div>
+      </div>
+      <!-- END CONTENT BODY -->
+      </div>
+
+      <script type="text/javascript">
+      $(document).ready(function() {
+        $("#create-picklist-module").click(function(e) {
+          e.preventDefault();
+          console.log("lol")
+          create_picklist();
+        });
+      });
+
+
+          // AJAX for submitting the picklist
+          function create_picklist() {
+              console.log("check post is working!") // sanity check
+              $("#picklist-messages").append("<div class='note note-info'>Creating picklist module...<strong>DO NOT leave or refresh this page!</strong></div>");
+              $.ajax({
+                  url : "{% url 'ajax_create_picklist' %}", // the endpoint
+                  type : "POST", // http method
+                  data : {},
+
+                  // handle a successful response
+                  success : function(json) {
+                      console.log(json); // log the returned json to the console
+                      $("#picklist-messages").append(json[0].message);
+                  },
+
+                  // handle a non-successful response
+                  error : function(xhr,errmsg,err) {
+                      $('#error_msg').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                          " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                      console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+                  }
+              });
+          };
+      </script>
+      <script src="{% static 'js/main.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'account/account_base.html' %}
+{% load staticfiles %}
+{% load account_tags %}
+{% load i18n %}
+{% block account_page %}
+
+          <!-- END LOGO -->
+          <!-- BEGIN LOGIN -->
+          <div class="content">
+              <!-- BEGIN SIGNUP FORM -->
+              <form class="form-group" id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                  <legend>Create an Account</legend>
+                  {% csrf_token %}
+                  {{ form }}
+                  {% if redirect_field_value %}
+                      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                  {% endif %}
+                  <hr>
+                  <div class="form-actions">
+                      <a href="{% url 'account_login' %}" class="btn grey-salsa btn-outline"> Back </a>
+                      <button type="submit" class="btn green pull-right"> Sign Up </button>
+                  </div>
+              </form>
+              <p class="login-signup">
+                  <small>
+                      {% trans "Already have an account?" %}  <strong><a href="{% urlnext 'account_login' %}">{% trans "Log in" %}</a></strong>
+                  </small>
+              </p>
+              <!-- END SIGNUP FORM -->
+          </div>
+
+              <script type="text/javascript">
+                  $(document).ready(function() {
+                      $('#id_username').focus();
+                  });
+              </script>
+          <!-- END LOGIN -->
+  {% endblock %}

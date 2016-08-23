@@ -1,0 +1,323 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block page %}
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+  <!-- BEGIN CONTENT BODY -->
+  <div class="page-content">
+    <div class="portlet light portlet-fit ">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class=" icon-layers font-green"></i>
+          <span class="caption-subject font-green bold uppercase">Create New Ticket - {{ ataccount.AccountName }}</span>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-5">
+            <h6 class="card-header primary-color white-text">TICKET INFORMATION</strong></h6>
+            <div class="card-block">
+                <form id="create-ticket"  method="POST">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label>Ticket Title</label>
+                    <input type="text" class="form-control" placeholder="Ticket Title" name="Title" id="Title"></input>
+                    <br>
+                    <label>Ticket Contact</label>
+                    <select class="form-control priority" name="ContactID" id="ContactID">
+                      <option value="">Please select...</option>
+                      <option value="">None</option>
+                      {% for contact in contacts %}
+                          <option value="{{ contact.id }}">{{ contact.FirstName }} {{ contact.LastName }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label>Ticket Description</label>
+                    <textarea class="form-control" rows="3" placeholder="Enter Ticket Description" name="Description" id="Description"></textarea>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Ticket Status</label>
+                      <select class="form-control" name="Status" id="Status">
+                        <option value="">Please select...</option>
+                        <option value="">None</option>
+                        {% for status in statuses %}
+                            <option value="{{ status.value }}">{{ status.key }}</option>
+                        {% endfor %}
+                      </select>
+                      <br>
+                      <label>Ticket Priority</label>
+                      <select class="form-control priority" name="Priority" id="Priority">
+                        <option value="">Please select...</option>
+                        <option value="">None</option>
+                        {% for priority in priorities %}
+                            <option value="{{ priority.value }}">{{ priority.key }}</option>
+                        {% endfor %}
+                      </select>
+                      <br>
+                      <label>Ticket Due Date</label>
+                      <div class="form-group" data-date-start-date="+0d">
+                        <input name="DueDateTime" id="DueDateTime" class="form-control form-control-inline input-medium date-picker" size="16" type="text">
+                      </div>
+                      <div class="form-group">
+                        <label>Ticket Estimated Hours</label>
+                            <input type="text" class="form-control" placeholder="Estimated Hours" name="EstimatedHours" id="EstimatedHours"></input>
+                    </div>
+                  </div>
+                    <div class="col-md-6">
+                      <label>Ticket Type</label>
+                      <select class="form-control" name="TicketType" id="TicketType">
+                        <option value="">Please select...</option>
+                        <option value="">None</option>
+                        {% for ticket_type in ticket_types %}
+                            <option value="{{ ticket_type.value }}">{{ ticket_type.key }}</option>
+                        {% endfor %}
+                      </select>
+                      <br>
+                      <label>Issue Type</label>
+                      <select class="form-control" name="IssueType" id="IssueType">
+                        <option value="">Please select...</option>
+                        <option value="">None</option>
+                        {% for issue_type in issue_types %}
+                            <option value="{{ issue_type.value }}">{{ issue_type.key }}</option>
+                        {% endfor %}
+                      </select>
+                      <br>
+                      <label>Sub Issue Type</label>
+                      <select class="form-control" name="SubIssueType" id="SubIssueType">
+                        <option value="">Please select...</option>
+                        <option value="">None</option>
+                        {% for sub_issue_type in sub_issue_types %}
+                            <option value="{{ sub_issue_type.value }}">{{ sub_issue_type.key }}</option>
+                        {% endfor %}
+                      </select>
+                      <br>
+                      <label>SLA</label>
+                      <select class="form-control" name="ServiceLevelAgreementID" id="ServiceLevelAgreementID">
+                        <option value="">Please select...</option>
+                        <option value="">None</option>
+                        {% for sla in slas %}
+                            <option value="{{ sla.value }}">{{ sla.key }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+
+
+
+
+                  <h6 class="card-header primary-color white-text">ASSIGNMENT</strong></h6>
+                  <label>Assign to Queue</label>
+                  <select class="form-control" name="QueueID" id="QueueID">
+                    <option value="">Please select...</option>
+                    <option value="">None</option>
+                    {% for queue_id in queue_ids %}
+                        <option value="{{ queue_id.value }}">{{ queue_id.key }}</option>
+                    {% endfor %}
+                  </select>
+                  <br>
+                  <label>Primary Resource</label>
+                  <select class="form-control" name="AssignedResourceID" id="AssignedResourceID">
+                    <option value="">Please select...</option>
+                    <option value="">None</option>
+                    {% for resource in resources %}
+                        <option value="{{ resource.id }}">{{ resource.FirstName }} {{ resource.LastName }}</option>
+                    {% endfor %}
+                  </select>
+                  <br>
+                  <label>Role</label>
+                  <select class="form-control" name="AssignedResourceRoleID" id="AssignedResourceRoleID">
+                    <option value="">Please select...</option>
+                    <option value="">None</option>
+                    {% for role in roles %}
+                        <option value="{{ role.id }}">{{ role.Name }}</option>
+                    {% endfor %}
+                  </select>
+                  <br>
+
+                  <h6 class="card-header primary-color white-text">BILLING</strong></h6>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Contract</label>
+                      <select class="form-control" name="ContractID" id="ContractID">
+                        {% if not contracts %}
+                          <option value="">No contracts for this account</option>
+                        {% else %}
+                          <option value="">Please select...</option>
+                          <option value="">None</option>
+                          {% for contract in contracts %}
+                              <option value="{{ contract.ContractName }}">{{ contract.ContractName }}</option>
+                          {% endfor %}
+                        {% endif %}
+                      </select>
+                      <br>
+                      <label>Service/Bundle</label>
+                      <select class="form-control" name="test" id="test">
+                        {% if not services %}
+                          <option value="">No services for this account</option>
+                          {% for service in services %}
+                              <option value="{{ service.id }}">{{ service.InvoiceDescription }}</option>
+                          {% endfor %}
+                        {% endif %}
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Work Type</label>
+                      <select class="form-control" name="AllocationCodeID" id="AllocationCodeID">
+                        {% if not allocation_codes %}
+                          <option value="">No services for this account</option>
+                        {% else %}
+                          <option value="">Please select...</option>
+                          <option value="">None</option>
+                          {% for allocation_code in allocation_codes %}
+                              <option value="{{ allocation_code.id }}">{{ allocation_code.Name }}</option>
+                          {% endfor %}
+                        {% endif %}
+                      </select>
+                    </div>
+                  </div>
+                  <input id="submit" type="submit" class="btn green" style="margin-top: 10px;" />
+                </form>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div id="error_msg">
+
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+        <!-- End Portlet -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END CONTENT BODY -->
+<!-- END CONTENT -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#AllocationCodeID, #AssignedResourceID, #ContactID, #ContractID, #Description, #DueDateTime, #EstimatedHours, #IssueType, #Priority, #QueueID, #ServiceLevelAgreementID, #Status, #SubIssueType, #TicketType, #Title").focusout(function(){
+          check_ticket();
+        });
+    });
+
+
+    $(document).on('submit','#create-ticket', function(e) {
+      e.preventDefault();
+      console.log("form submitted")
+      create_ticket();
+    });
+
+    // AJAX for checking
+    function check_ticket() {
+        console.log("check post is working!") // sanity check
+        $.ajax({
+            url : "{% url 'ajax_create_ticket' %}", // the endpoint
+            type : "POST", // http method
+            data : {
+              AllocationCodeID:$('#AllocationCodeID').val(),
+              AssignedResourceID:$('#AssignedResourceID').val(),
+              AssignedResourceRoleID:$('#AssignedResourceRoleID').val(),
+              ContactID:$('#ContactID').val(),
+              ContractID:$('#ContractID').val(),
+              Description:$('#Description').val(),
+              DueDateTime:$('#DueDateTime').val(),
+              EstimatedHours:$('#EstimatedHours').val(),
+              IssueType:$('#IssueType').val(),
+              Priority:$('#Priority').val(),
+              QueueID:$('#QueueID').val(),
+              ServiceLevelAgreementID:$('#ServiceLevelAgreementID').val(),
+              Status:$('#Status').val(),
+              SubIssueType:$('#SubIssueType').val(),
+              TicketType:$('#TicketType').val(),
+              Title:$('#Title').val(),
+             }, // data sent with the post request
+
+            // handle a successful response
+            success : function(json) {
+                if (!$.trim( $("#error_msg").html())) {
+                  $('#submit').prop('disabled', true);
+                };
+                if ($.trim( $("#error_msg").html())) {
+                  $('#submit').prop('disabled', false);
+                };
+                $('#error_msg').html('');
+                console.log(json); // log the returned json to the console
+                console.log("success"); // another sanity check
+                $("#error_msg").prepend("<div class='note note-info'>" + json[0].message + "</div>");
+            },
+
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#error_msg').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+    };
+
+    // AJAX for posting
+    function create_ticket() {
+        console.log("create post is working!") // sanity check
+        $.ajax({
+            url : "{% url 'create_ticket' ataccount.id %}", // the endpoint
+            type : "POST", // http method
+            data : {
+              AllocationCodeID:$('#AllocationCodeID').val(),
+              AssignedResourceID:$('#AssignedResourceID').val(),
+              AssignedResourceRoleID:$('#AssignedResourceRoleID').val(),
+              ContactID:$('#ContactID').val(),
+              ContractID:$('#ContractID').val(),
+              Description:$('#Description').val(),
+              DueDateTime:$('#DueDateTime').val(),
+              EstimatedHours:$('#EstimatedHours').val(),
+              IssueType:$('#IssueType').val(),
+              Priority:$('#Priority').val(),
+              QueueID:$('#QueueID').val(),
+              ServiceLevelAgreementID:$('#ServiceLevelAgreementID').val(),
+              Status:$('#Status').val(),
+              SubIssueType:$('#SubIssueType').val(),
+              TicketType:$('#TicketType').val(),
+              Title:$('#Title').val(),
+             }, // data sent with the post request
+
+            // handle a successful response
+            success : function(json) {
+                $('#error_msg').html('');
+                $('#AllocationCodeID').val('');
+                $('#AssignedResourceID').val('');
+                $('#AssignedResourceRoleID').val('');
+                $('#ContactID').val('');
+                $('#ContractID').val('');
+                $('#Description').val('');
+                $('#DueDateTime').val('');
+                $('#EstimatedHours').val('');
+                $('#IssueType').val('');
+                $('#Priority').val('');
+                $('#QueueID').val('');
+                $('#ServiceLevelAgreementID').val('');
+                $('#Status').val('');
+                $('#SubIssueType').val('');
+                $('#TicketType').val('');
+                $('#Title').val('');
+                console.log(json); // log the returned json to the console
+                console.log("success"); // another sanity check
+                $("#error_msg").prepend("<div class='note note-info'>" + json + "</div>");
+            },
+
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+                $('#error_msg').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+    };
+</script>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
