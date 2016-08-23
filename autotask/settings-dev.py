@@ -217,6 +217,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_HOST_USER = 'info@studiointhecloud.co.uk'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'Mnschnaap1!'
 SERVER_EMAIL = 'info@studiointhecloud.co.uk'
 DEFAULT_FROM_EMAIL = 'info@studiointhecloud.co.uk'
